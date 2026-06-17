@@ -1,7 +1,7 @@
 {
-  "name": "lifelink-selenium-web-tests",
+  "name": "civicbin-selenium-web-tests",
   "version": "1.0.0",
-  "description": "Selenium Node.js E2E Web test suite for LifeLink",
+  "description": "Selenium Node.js E2E Web test suite for CivicBin",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/selenium.test.js --timeout 120000"

@@ -115,7 +115,7 @@ const seleniumCases = [
   { id: "TC100", description: "Full Flow: Guest search to login prompt to request matching", page: "chat.html", locator: By.id("messageInput"), category: "End-to-End Testing" }
 ];
 
-describe("LifeLink E2E Selenium Web Tests", function () {
+describe("CivicBin E2E Selenium Web Tests", function () {
   let driver;
   const testResults = [];
 
@@ -144,7 +144,7 @@ describe("LifeLink E2E Selenium Web Tests", function () {
     if (!fs.existsSync(reportsDir)) {
       fs.mkdirSync(reportsDir, { recursive: true });
     }
-    const reportPath = path.join(reportsDir, 'LifeLink_Web_Selenium_Report.xlsx');
+    const reportPath = path.join(reportsDir, 'CivicBin_Web_Selenium_Report.xlsx');
 
     const wb = XLSX.utils.book_new();
     const wsData = [

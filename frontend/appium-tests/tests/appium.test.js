@@ -127,7 +127,7 @@ const appiumCases = [
   { id: "TC100", description: "Full Flow: Guest search to login prompt to request matching", key: "profileNavVisible", category: "End-to-End Testing" }
 ];
 
-describe("LifeLink E2E Appium Mobile Tests", function () {
+describe("CivicBin E2E Appium Mobile Tests", function () {
   let client;
   const testResults = [];
 
@@ -175,7 +175,7 @@ describe("LifeLink E2E Appium Mobile Tests", function () {
     if (!fs.existsSync(reportsDir)) {
       fs.mkdirSync(reportsDir, { recursive: true });
     }
-    const reportPath = path.join(reportsDir, 'LifeLink_Mobile_Appium_Report.xlsx');
+    const reportPath = path.join(reportsDir, 'CivicBin_Mobile_Appium_Report.xlsx');
 
     const wb = XLSX.utils.book_new();
     const wsData = [

@@ -1,7 +1,7 @@
 {
-  "name": "lifelink-appium-mobile-tests",
+  "name": "civicbin-appium-mobile-tests",
   "version": "1.0.0",
-  "description": "Appium Node.js E2E Mobile test suite for LifeLink Android Application",
+  "description": "Appium Node.js E2E Mobile test suite for CivicBin Android Application",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/appium.test.js --timeout 120000"

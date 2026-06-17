@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: web-report
-        path: reports/LifeLink_Web_Selenium_Report.xlsx
+        path: reports/CivicBin_Web_Selenium_Report.xlsx
 
   mobile-tests:
     name: Appium Mobile Tests Dry-Run
@@ -62,7 +62,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mobile-report
-        path: reports/LifeLink_Mobile_Appium_Report.xlsx
+        path: reports/CivicBin_Mobile_Appium_Report.xlsx
 
   deploy:
     name: Deploy to GitHub Pages
@@ -79,7 +79,7 @@ jobs:
         publish_dir: ./web
 
   generate-report:
-    name: Generate LifeLink Test Report
+    name: Generate CivicBin Test Report
     needs: [web-tests, mobile-tests]
     runs-on: ubuntu-latest
     steps:
@@ -105,5 +105,5 @@ jobs:
     - name: Upload Final Unified Reports
       uses: actions/upload-artifact@v4
       with:
-        name: LifeLink_Test_Reports
+        name: CivicBin_Test_Reports
         path: reports/
