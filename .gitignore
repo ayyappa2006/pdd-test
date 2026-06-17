@@ -7,3 +7,7 @@ frontend/.idea/workspace.xml
 frontend/.idea/libraries/
 frontend/.idea/modules.xml
 frontend/.idea/deploymentTargetDropDown.xml
+
+# Node.js ignores
+**/node_modules/
+reports/
