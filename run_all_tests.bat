@@ -1,6 +1,6 @@
 @echo off
 echo ====================================================
-echo Running CivicBin E2E Testing Pipeline (Web + Mobile)
+echo Running LifeLink E2E Testing Pipeline (Web + Mobile)
 echo ====================================================
 
 echo.
@@ -24,7 +24,7 @@ cd ..\..
 echo.
 echo ====================================================
 echo Testing complete! Reports generated successfully:
-echo - Web: reports\CivicBin_Web_Selenium_Report.xlsx
-echo - Mobile: reports\CivicBin_Mobile_Appium_Report.xlsx
+echo - Web: reports\LifeLink_Web_Selenium_Report.xlsx
+echo - Mobile: reports\LifeLink_Mobile_Appium_Report.xlsx
 echo ====================================================
 pause

@@ -77,7 +77,7 @@ const appiumCases = [
   { id: "A-050", description: "Verify account reset password back navigation is visible", key: "resetBackNavigationVisible", category: "Regression Testing" }
 ];
 
-describe("CivicBin E2E Appium Mobile Tests", function () {
+describe("LifeLink E2E Appium Mobile Tests", function () {
   let client;
   const testResults = [];
 
@@ -125,7 +125,7 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
     if (!fs.existsSync(reportsDir)) {
       fs.mkdirSync(reportsDir, { recursive: true });
     }
-    const reportPath = path.join(reportsDir, 'CivicBin_Mobile_Appium_Report.xlsx');
+    const reportPath = path.join(reportsDir, 'LifeLink_Mobile_Appium_Report.xlsx');
 
     const wb = XLSX.utils.book_new();
     const wsData = [

@@ -1,4 +1,4 @@
-name: CivicBin E2E Testing Pipeline
+name: Generate Report + Deploy
 
 on:
   push:
@@ -7,10 +7,9 @@ on:
     branches: [ main ]
 
 jobs:
-  run-e2e-tests:
-    name: Run E2E QA Test Pipeline (11 Categories)
+  web-tests:
+    name: Selenium E2E Web + API Tests
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
@@ -25,28 +24,86 @@ jobs:
         cd frontend/selenium-tests
         npm install
 
-    - name: Run E2E Selenium Web Tests (Functional, UI/UX, Security, Performance, Database, Regression, Accessibility)
+    - name: Run Selenium Web Tests
       run: |
         cd frontend/selenium-tests
         npm test
-      continue-on-error: true # Let mobile tests run even if some web tests fail elements checks due to mock endpoints
+      continue-on-error: true
+
+    - name: Save Web Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: web-report
+        path: reports/LifeLink_Web_Selenium_Report.xlsx
+
+  mobile-tests:
+    name: Appium Mobile Tests Dry-Run
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
     - name: Install Appium Mobile Test Dependencies
       run: |
         cd frontend/appium-tests
         npm install
 
-    - name: Run E2E Appium Mobile Tests (Mobile-Specific, Functional, UI/UX, Regression, Performance, Database)
+    - name: Run Appium Mobile Tests
       run: |
         cd frontend/appium-tests
         npm test
+
+    - name: Save Mobile Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: mobile-report
+        path: reports/LifeLink_Mobile_Appium_Report.xlsx
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: web-tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Deploy static files to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./web
+
+  generate-report:
+    name: Generate LifeLink Test Report
+    needs: [web-tests, mobile-tests]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Download Web Results
+      uses: actions/download-artifact@v3
+      with:
+        name: web-report
+        path: reports
+
+    - name: Download Mobile Results
+      uses: actions/download-artifact@v3
+      with:
+        name: mobile-report
+        path: reports
 
     - name: Verify Generated Reports
       run: |
         ls -la reports/
 
-    - name: Upload Excel Test Analysis Reports
+    - name: Upload Final Unified Reports
       uses: actions/upload-artifact@v3
       with:
-        name: CivicBin_Excel_QA_Analysis_Reports
+        name: LifeLink_Test_Reports
         path: reports/
