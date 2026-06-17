@@ -1,0 +1,9 @@
+# Android-specific ignores
+frontend/.gradle/
+frontend/build/
+frontend/app/build/
+frontend/local.properties
+frontend/.idea/workspace.xml
+frontend/.idea/libraries/
+frontend/.idea/modules.xml
+frontend/.idea/deploymentTargetDropDown.xml
