@@ -25,56 +25,56 @@ const wdOpts = {
 };
 
 const appiumCases = [
-  { id: "A-001", description: "Verify login page email field is visible", key: "loginEmailVisible" },
-  { id: "A-002", description: "Verify login page password field is visible", key: "loginPasswordVisible" },
-  { id: "A-003", description: "Verify login button is visible on login page", key: "loginButtonVisible" },
-  { id: "A-004", description: "Verify forgot password link is visible", key: "forgotPasswordLinkVisible" },
-  { id: "A-005", description: "Verify signup link is visible on login page", key: "signupLinkVisible" },
-  { id: "A-006", description: "Verify valid user can log in", key: "validUserLogin" },
-  { id: "A-007", description: "Verify invalid login shows an error", key: "invalidLoginError" },
-  { id: "A-008", description: "Verify signup navigation from login page", key: "navigateToSignup" },
-  { id: "A-009", description: "Verify signup name field is visible", key: "signupNameVisible" },
-  { id: "A-010", description: "Verify signup email field is visible", key: "signupEmailVisible" },
-  { id: "A-011", description: "Verify signup password field is visible", key: "signupPasswordVisible" },
-  { id: "A-012", description: "Verify signup button is visible", key: "signupButtonVisible" },
-  { id: "A-013", description: "Verify forgot password page email field is visible", key: "resetEmailVisible" },
-  { id: "A-014", description: "Verify forgot password new password field is visible", key: "resetNewPasswordVisible" },
-  { id: "A-015", description: "Verify reset password save button is visible", key: "resetSaveButtonVisible" },
-  { id: "A-016", description: "Verify dashboard report count is visible after login", key: "dashboardReportCountVisible" },
-  { id: "A-017", description: "Verify dashboard cleanliness card is visible", key: "dashboardCleanlinessVisible" },
-  { id: "A-018", description: "Verify upload photo button is visible on dashboard", key: "uploadPhotoButtonVisible" },
-  { id: "A-019", description: "Verify clicking upload photo opens upload screen", key: "uploadScreenOpen" },
-  { id: "A-020", description: "Verify gallery button is visible on upload screen", key: "galleryButtonVisible" },
-  { id: "A-021", description: "Verify camera button is visible on upload screen", key: "cameraButtonVisible" },
-  { id: "A-022", description: "Verify upload screen back button is visible", key: "uploadBackVisible" },
-  { id: "A-023", description: "Verify report photo screen contact field is visible", key: "contactFieldVisible" },
-  { id: "A-024", description: "Verify report photo screen category spinner is visible", key: "categorySpinnerVisible" },
-  { id: "A-025", description: "Verify report photo description field is visible", key: "descriptionFieldVisible" },
-  { id: "A-026", description: "Verify report photo send button is visible", key: "sendReportButtonVisible" },
-  { id: "A-027", description: "Verify report photo address display is visible", key: "addressDisplayVisible" },
-  { id: "A-028", description: "Verify report photo map view exists", key: "mapViewVisible" },
-  { id: "A-029", description: "Verify report history navigation button is visible", key: "historyNavVisible" },
-  { id: "A-030", description: "Verify history screen header is displayed", key: "historyHeaderVisible" },
-  { id: "A-031", description: "Verify profile navigation button is visible", key: "profileNavVisible" },
-  { id: "A-032", description: "Verify profile screen name field is visible", key: "profileNameVisible" },
-  { id: "A-033", description: "Verify profile screen email field is visible", key: "profileEmailVisible" },
-  { id: "A-034", description: "Verify help screen button is visible", key: "helpButtonVisible" },
-  { id: "A-035", description: "Verify privacy screen link is visible", key: "privacyLinkVisible" },
-  { id: "A-036", description: "Verify settings link is visible", key: "settingsLinkVisible" },
-  { id: "A-037", description: "Verify organization login fields are present when available", key: "orgLoginFieldsVisible" },
-  { id: "A-038", description: "Verify organization signup link is visible when available", key: "orgSignupVisible" },
-  { id: "A-039", description: "Verify organization dashboard summary values are present", key: "orgDashboardSummaryVisible" },
-  { id: "A-040", description: "Verify organization issues list is visible", key: "orgIssuesListVisible" },
-  { id: "A-041", description: "Verify organization issue detail buttons are visible", key: "orgIssueButtonsVisible" },
-  { id: "A-042", description: "Verify organization settings profile display is visible", key: "orgSettingsProfileVisible" },
-  { id: "A-043", description: "Verify organization help screen is accessible", key: "orgHelpVisible" },
-  { id: "A-044", description: "Verify organization completed screen is visible", key: "orgCompletedVisible" },
-  { id: "A-045", description: "Verify bottom navigation History button is present", key: "bottomNavHistoryVisible" },
-  { id: "A-046", description: "Verify bottom navigation Pending button is present", key: "bottomNavPendingVisible" },
-  { id: "A-047", description: "Verify bottom navigation Profile button is present", key: "bottomNavProfileVisible" },
-  { id: "A-048", description: "Verify send report button remains accessible after typing details", key: "sendReportClickable" },
-  { id: "A-049", description: "Verify upload screen does not crash when opening", key: "uploadScreenStable" },
-  { id: "A-050", description: "Verify account reset password back navigation is visible", key: "resetBackNavigationVisible" }
+  { id: "A-001", description: "Verify login page email field is visible", key: "loginEmailVisible", category: "UI/UX Testing" },
+  { id: "A-002", description: "Verify login page password field is visible", key: "loginPasswordVisible", category: "UI/UX Testing" },
+  { id: "A-003", description: "Verify login button is visible on login page", key: "loginButtonVisible", category: "UI/UX Testing" },
+  { id: "A-004", description: "Verify forgot password link is visible", key: "forgotPasswordLinkVisible", category: "UI/UX Testing" },
+  { id: "A-005", description: "Verify signup link is visible on login page", key: "signupLinkVisible", category: "UI/UX Testing" },
+  { id: "A-006", description: "Verify valid user can log in", key: "validUserLogin", category: "Functional Testing" },
+  { id: "A-007", description: "Verify invalid login shows an error", key: "invalidLoginError", category: "Functional Testing" },
+  { id: "A-008", description: "Verify signup navigation from login page", key: "navigateToSignup", category: "Functional Testing" },
+  { id: "A-009", description: "Verify signup name field is visible", key: "signupNameVisible", category: "UI/UX Testing" },
+  { id: "A-010", description: "Verify signup email field is visible", key: "signupEmailVisible", category: "UI/UX Testing" },
+  { id: "A-011", description: "Verify signup password field is visible", key: "signupPasswordVisible", category: "UI/UX Testing" },
+  { id: "A-012", description: "Verify signup button is visible", key: "signupButtonVisible", category: "UI/UX Testing" },
+  { id: "A-013", description: "Verify forgot password page email field is visible", key: "resetEmailVisible", category: "UI/UX Testing" },
+  { id: "A-014", description: "Verify forgot password new password field is visible", key: "resetNewPasswordVisible", category: "UI/UX Testing" },
+  { id: "A-015", description: "Verify reset password save button is visible", key: "resetSaveButtonVisible", category: "UI/UX Testing" },
+  { id: "A-016", description: "Verify dashboard report count is visible after login", key: "dashboardReportCountVisible", category: "Database Testing" },
+  { id: "A-017", description: "Verify dashboard cleanliness card is visible", key: "dashboardCleanlinessVisible", category: "UI/UX Testing" },
+  { id: "A-018", description: "Verify upload photo button is visible on dashboard", key: "uploadPhotoButtonVisible", category: "UI/UX Testing" },
+  { id: "A-019", description: "Verify clicking upload photo opens upload screen", key: "uploadScreenOpen", category: "Functional Testing" },
+  { id: "A-020", description: "Verify gallery button is visible on upload screen", key: "galleryButtonVisible", category: "UI/UX Testing" },
+  { id: "A-021", description: "Verify camera button is visible on upload screen", key: "cameraButtonVisible", category: "UI/UX Testing" },
+  { id: "A-022", description: "Verify upload screen back button is visible", key: "uploadBackVisible", category: "UI/UX Testing" },
+  { id: "A-023", description: "Verify report photo screen contact field is visible", key: "contactFieldVisible", category: "UI/UX Testing" },
+  { id: "A-024", description: "Verify report photo screen category spinner is visible", key: "categorySpinnerVisible", category: "UI/UX Testing" },
+  { id: "A-025", description: "Verify report photo description field is visible", key: "descriptionFieldVisible", category: "UI/UX Testing" },
+  { id: "A-026", description: "Verify report photo send button is visible", key: "sendReportButtonVisible", category: "UI/UX Testing" },
+  { id: "A-027", description: "Verify report photo address display is visible", key: "addressDisplayVisible", category: "UI/UX Testing" },
+  { id: "A-028", description: "Verify report photo map view exists", key: "mapViewVisible", category: "UI/UX Testing" },
+  { id: "A-029", description: "Verify report history navigation button is visible", key: "historyNavVisible", category: "UI/UX Testing" },
+  { id: "A-030", description: "Verify history screen header is displayed", key: "historyHeaderVisible", category: "UI/UX Testing" },
+  { id: "A-031", description: "Verify profile navigation button is visible", key: "profileNavVisible", category: "UI/UX Testing" },
+  { id: "A-032", description: "Verify profile screen name field is visible", key: "profileNameVisible", category: "UI/UX Testing" },
+  { id: "A-033", description: "Verify profile screen email field is visible", key: "profileEmailVisible", category: "UI/UX Testing" },
+  { id: "A-034", description: "Verify help screen button is visible", key: "helpButtonVisible", category: "UI/UX Testing" },
+  { id: "A-035", description: "Verify privacy screen link is visible", key: "privacyLinkVisible", category: "UI/UX Testing" },
+  { id: "A-036", description: "Verify settings link is visible", key: "settingsLinkVisible", category: "UI/UX Testing" },
+  { id: "A-037", description: "Verify organization login fields are present when available", key: "orgLoginFieldsVisible", category: "Mobile-Specific Testing" },
+  { id: "A-038", description: "Verify organization signup link is visible when available", key: "orgSignupVisible", category: "Mobile-Specific Testing" },
+  { id: "A-039", description: "Verify organization dashboard summary values are present", key: "orgDashboardSummaryVisible", category: "Mobile-Specific Testing" },
+  { id: "A-040", description: "Verify organization issues list is visible", key: "orgIssuesListVisible", category: "Mobile-Specific Testing" },
+  { id: "A-041", description: "Verify organization issue detail buttons are visible", key: "orgIssueButtonsVisible", category: "Mobile-Specific Testing" },
+  { id: "A-042", description: "Verify organization settings profile display is visible", key: "orgSettingsProfileVisible", category: "Mobile-Specific Testing" },
+  { id: "A-043", description: "Verify organization help screen is accessible", key: "orgHelpVisible", category: "Mobile-Specific Testing" },
+  { id: "A-044", description: "Verify organization completed screen is visible", key: "orgCompletedVisible", category: "Mobile-Specific Testing" },
+  { id: "A-045", description: "Verify bottom navigation History button is present", key: "bottomNavHistoryVisible", category: "Regression Testing" },
+  { id: "A-046", description: "Verify bottom navigation Pending button is present", key: "bottomNavPendingVisible", category: "Regression Testing" },
+  { id: "A-047", description: "Verify bottom navigation Profile button is present", key: "bottomNavProfileVisible", category: "Regression Testing" },
+  { id: "A-048", description: "Verify send report button remains accessible after typing details", key: "sendReportClickable", category: "Regression Testing" },
+  { id: "A-049", description: "Verify upload screen does not crash when opening", key: "uploadScreenStable", category: "Performance Testing" },
+  { id: "A-050", description: "Verify account reset password back navigation is visible", key: "resetBackNavigationVisible", category: "Regression Testing" }
 ];
 
 describe("CivicBin E2E Appium Mobile Tests", function () {
@@ -83,7 +83,6 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
 
   // Helper to find element by Resource ID
   async function findById(id) {
-    // WebdriverIO supports resource-id selectors via 'id=...' or standard selectors
     try {
       return await client.$(`id=${id}`);
     } catch {
@@ -108,7 +107,6 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
   }
 
   before(async function () {
-    // Increase timeout since starting emulator/driver takes time
     this.timeout(180000);
     try {
       client = await remote(wdOpts);
@@ -131,11 +129,11 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
 
     const wb = XLSX.utils.book_new();
     const wsData = [
-      ["Test Case ID", "Description", "Type", "Status", "Notes"]
+      ["Test Case ID", "Description", "Testing Category", "Type", "Status", "Notes"]
     ];
 
     testResults.forEach(r => {
-      wsData.push([r.id, r.description, "Appium", r.status, r.notes]);
+      wsData.push([r.id, r.description, r.category, "Appium", r.status, r.notes]);
     });
 
     const ws = XLSX.utils.aoa_to_sheet(wsData);
@@ -148,12 +146,12 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
   });
 
   appiumCases.forEach(tc => {
-    it(`${tc.id}: ${tc.description}`, async function () {
+    it(`${tc.id} (${tc.category}): ${tc.description}`, async function () {
       if (!client) {
-        // Mock execution for report generation when Appium server is not running
         testResults.push({
           id: tc.id,
           description: tc.description,
+          category: tc.category,
           status: "PASS",
           notes: "Mock validation passed (offline mode)"
         });
@@ -311,6 +309,7 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
         testResults.push({
           id: tc.id,
           description: tc.description,
+          category: tc.category,
           status: status,
           notes: notes
         });
