@@ -1,0 +1,14 @@
+{
+  "name": "civicbin-load-tests",
+  "version": "1.0.0",
+  "description": "Baseline and Load testing suite using Autocannon for CivicBin",
+  "main": "load-test.js",
+  "scripts": {
+    "test": "node load-test.js"
+  },
+  "dependencies": {
+    "autocannon": "^7.12.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
