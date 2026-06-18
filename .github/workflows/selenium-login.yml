@@ -46,20 +46,21 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
-        node-version: '18'
+        python-version: '3.10'
 
     - name: Install Appium Mobile Test Dependencies
       run: |
         cd appium-tests
-        npm install
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Run Appium Mobile Tests
       run: |
         cd appium-tests
-        npm test
+        python test_runner.py
 
     - name: Save Mobile Results
       uses: actions/upload-artifact@v4

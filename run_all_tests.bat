@@ -13,12 +13,12 @@ call npm test
 cd ..
 
 echo.
-echo [3/4] Checking and installing Appium dependencies...
+echo [3/4] Checking and installing Appium Python dependencies...
 cd appium-tests
-call npm install
+python -m pip install -r requirements.txt
 echo.
-echo [4/4] Running Appium Mobile E2E tests...
-call npm test
+echo [4/4] Running Appium Mobile E2E tests (Python)...
+python test_runner.py
 cd ..
 
 echo.

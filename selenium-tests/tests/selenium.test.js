@@ -6,8 +6,9 @@ const fs = require('fs');
 const XLSX = require('xlsx');
 const http = require('http');
 
-const PORT = 8085;
-const webRoot = `http://localhost:${PORT}`;
+const config = require('../config');
+const PORT = config.PORT;
+const webRoot = config.webRoot;
 
 function getUrl(page) {
   return `${webRoot}/${page}`;
@@ -157,14 +158,10 @@ describe("CivicBin E2E Selenium Web Tests", function () {
     console.log(`Local web server running at http://localhost:${PORT}`);
 
     const options = new chrome.Options();
-    options.addArguments('--disable-infobars');
-    options.addArguments('--disable-notifications');
-    options.addArguments('--start-maximized');
-    options.addArguments('--headless=new'); // Enable headless execution to run cleanly in background/CI
-    options.addArguments('--no-sandbox');
-    options.addArguments('--disable-dev-shm-usage');
-    options.addArguments('--allow-file-access-from-files');
-    options.addArguments('--disable-web-security');
+    config.chromeOptions.forEach(arg => options.addArguments(arg));
+    if (config.headless) {
+      options.addArguments('--headless=new');
+    }
 
     driver = await new Builder()
       .forBrowser('chrome')

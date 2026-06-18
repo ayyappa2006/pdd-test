@@ -4,7 +4,7 @@
   "description": "Selenium Node.js E2E Web test suite for CivicBin",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/selenium.test.js --timeout 120000"
+    "test": "node test-runner.js"
   },
   "dependencies": {},
   "devDependencies": {
