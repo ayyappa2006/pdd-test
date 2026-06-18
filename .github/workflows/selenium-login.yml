@@ -24,12 +24,12 @@ jobs:
 
     - name: Install Selenium Web Test Dependencies
       run: |
-        cd frontend/selenium-tests
+        cd selenium-tests
         npm install
 
     - name: Run Selenium Web Tests
       run: |
-        cd frontend/selenium-tests
+        cd selenium-tests
         npm test
       continue-on-error: true
 
@@ -53,12 +53,12 @@ jobs:
 
     - name: Install Appium Mobile Test Dependencies
       run: |
-        cd frontend/appium-tests
+        cd appium-tests
         npm install
 
     - name: Run Appium Mobile Tests
       run: |
-        cd frontend/appium-tests
+        cd appium-tests
         npm test
 
     - name: Save Mobile Results

@@ -125,7 +125,7 @@ describe("CivicBin E2E Selenium Web Tests", function () {
     // Start local static web server to bypass file:// localStorage restrictions
     server = http.createServer((req, res) => {
       const urlPath = decodeURIComponent(req.url.split('?')[0]);
-      let filePath = path.join(__dirname, '../../../web', urlPath);
+      let filePath = path.join(__dirname, '../../web', urlPath);
       if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
         filePath = path.join(filePath, 'index.html');
       }
@@ -191,7 +191,7 @@ describe("CivicBin E2E Selenium Web Tests", function () {
     }
 
     // Generate Excel report
-    const reportsDir = path.join(__dirname, '../../../reports');
+    const reportsDir = path.join(__dirname, '../../reports');
     if (!fs.existsSync(reportsDir)) {
       fs.mkdirSync(reportsDir, { recursive: true });
     }

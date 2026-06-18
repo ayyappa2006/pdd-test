@@ -5,21 +5,21 @@ echo ====================================================
 
 echo.
 echo [1/4] Checking and installing Selenium dependencies...
-cd frontend\selenium-tests
+cd selenium-tests
 call npm install
 echo.
 echo [2/4] Running Selenium Web E2E tests...
 call npm test
-cd ..\..
+cd ..
 
 echo.
 echo [3/4] Checking and installing Appium dependencies...
-cd frontend\appium-tests
+cd appium-tests
 call npm install
 echo.
 echo [4/4] Running Appium Mobile E2E tests...
 call npm test
-cd ..\..
+cd ..
 
 echo.
 echo ====================================================

@@ -20,7 +20,7 @@ const wdOpts = {
     'appium:autoLaunch': true,
     'appium:noReset': false,
     'appium:fullReset': false,
-    'appium:app': path.resolve(__dirname, '../../app/build/outputs/apk/debug/app-debug.apk')
+    'appium:app': path.resolve(__dirname, '../../frontend/app/build/outputs/apk/debug/app-debug.apk')
   }
 };
 
@@ -171,7 +171,7 @@ describe("CivicBin E2E Appium Mobile Tests", function () {
     }
 
     // Generate Excel report
-    const reportsDir = path.join(__dirname, '../../../reports');
+    const reportsDir = path.join(__dirname, '../../reports');
     if (!fs.existsSync(reportsDir)) {
       fs.mkdirSync(reportsDir, { recursive: true });
     }
