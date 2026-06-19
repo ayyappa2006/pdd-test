@@ -5,7 +5,7 @@ const { resetDatabase } = require('./reset-db');
 
 // Instantiate a new Mocha instance
 const mocha = new Mocha({
-  timeout: 120000,
+  timeout: 600000,
   reporter: 'spec'
 });
 

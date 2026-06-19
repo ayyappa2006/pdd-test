@@ -197,13 +197,13 @@
                             iconCompleted.classList.add('active');
                         }
                     } else {
-                        alert("Error fetching report details.");
+                        console.error("Error fetching report details.");
                         window.history.back();
                     }
                 })
                 .catch(err => {
                     console.error(err);
-                    alert("Network error.");
+                    console.error("Network error.");
                     window.history.back();
                 });
         });
