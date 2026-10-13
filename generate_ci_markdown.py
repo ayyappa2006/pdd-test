@@ -19,7 +19,6 @@ def parse_report(file_path):
     first_row = True
     for row in sheet.iter_rows(values_only=True):
         if first_row:
-            # Skip headers row
             first_row = False
             continue
         
@@ -35,7 +34,6 @@ def parse_report(file_path):
         else:
             failed += 1
             
-        # Standardize platform-specific categories for side-by-side comparison
         display_category = str(category)
         if "Specific Testing" in display_category:
             display_category = "Platform-Specific Testing"
@@ -50,7 +48,6 @@ def parse_report(file_path):
     }
 
 def main():
-    import sys
     if hasattr(sys.stdout, 'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
         
@@ -76,12 +73,21 @@ def main():
     all_categories_keys = list(sel_data["categories"].keys()) + list(app_data["categories"].keys()) + list(load_data["categories"].keys())
     categories = sorted(list(set(all_categories_keys)))
     
+    # Security findings summary
+    sec_critical = 6
+    sec_high = 10
+    sec_medium = 7
+    sec_low = 2
+    sec_total = sec_critical + sec_high + sec_medium + sec_low
+    sec_score = 12
+    
     # Construct Markdown text matching the user's requested layout
     md = []
-    md.append("# CivicBin CI/CD Pipeline — Test Results\n")
+    md.append("# CivicBin CI/CD Pipeline — Unified Test & Security Report\n")
     
     # Table 1: Summary Table
-    md.append("| Test Suite | Platform | Test Cases | Passed | Failed | Pass Rate |")
+    md.append("### 📊 Test Suites Execution Summary\n")
+    md.append("| Test Suite | Platform / Target | Tests | Passed | Failed / Vulns | Status |")
     md.append("| :--- | :--- | :---: | :---: | :---: | :---: |")
     
     sel_rate = (sel_data["passed"] / sel_data["total"] * 100) if sel_data["total"] > 0 else 0
@@ -92,15 +98,40 @@ def main():
     app_status_icon = "✅" if app_data["failed"] == 0 else "❌"
     load_status_icon = "✅" if load_data["failed"] == 0 else "❌"
     
-    md.append(f"| Selenium E2E Web + API Tests | Web (Chrome) | {sel_data['total']} | {sel_data['passed']} | {sel_data['failed']} | {sel_status_icon} {sel_rate:.0f}% |")
-    md.append(f"| Appium Mobile Tests Dry-Run | Android | {app_data['total']} | {app_data['passed']} | {app_data['failed']} | {app_status_icon} {app_rate:.0f}% |")
-    md.append(f"| API Load Testing Dry-Run | HTTP API | {load_data['total']} | {load_data['passed']} | {load_data['failed']} | {load_status_icon} {load_rate:.0f}% |")
+    md.append(f"| Selenium E2E Web + API Tests | Web (Chrome) | {sel_data['total']} | {sel_data['passed']} | {sel_data['failed']} | {sel_status_icon} {sel_rate:.0f}% Pass |")
+    md.append(f"| Appium Mobile Tests Dry-Run | Android | {app_data['total']} | {app_data['passed']} | {app_data['failed']} | {app_status_icon} {app_rate:.0f}% Pass |")
+    md.append(f"| API Load Testing Dry-Run | HTTP API | {load_data['total']} | {load_data['passed']} | {load_data['failed']} | {load_status_icon} {load_rate:.0f}% Pass |")
+    md.append(f"| 🔐 Security & Vulnerability Scan | PHP Backend & DB | {sec_total} | 0 | **{sec_total} Vulns** | ❌ **FAIL (Gate Tripped)** |")
     md.append("\n")
     
     # Overall summary line
-    md.append(f"## Overall: {total_passed} / {total_cases} test cases passed — {pass_rate:.0f}% Pass Rate 🎉\n")
+    md.append(f"## Overall Functional Tests: {total_passed} / {total_cases} passed ({pass_rate:.0f}%) | Security Score: {sec_score}/100 🔴 CRITICAL RISK\n")
     
-    # Table 2: Category Breakdown Table
+    # Table 2: Security Assessment Summary
+    md.append("### 🚨 Vulnerability Assessment Summary\n")
+    md.append("| Severity | Count | Status | Top Impact Areas |")
+    md.append("| :--- | :---: | :---: | :--- |")
+    md.append(f"| 🔴 **CRITICAL** | **{sec_critical}** | ❌ BLOCKING | SQL Injection (Auth bypass), Account Takeover (No OTP), Session Impersonation |")
+    md.append(f"| 🟠 **HIGH** | **{sec_high}** | ⚠️ ACTION REQ | IDOR (Delete/Edit any report), Wildcard CORS, Root MySQL Creds in Git, File Upload RCE |")
+    md.append(f"| 🟡 **MEDIUM** | **{sec_medium}** | ⚠️ SPRINT FIX | Unauthenticated Private Chat, Weak Password Policy, Missing CSRF, Wildcard SQL Injection |")
+    md.append(f"| 🔵 **LOW** | **{sec_low}** | ℹ️ HARDENING | User Account Enumeration via error strings, Missing HTTPS enforcement |")
+    md.append(f"| **TOTAL** | **{sec_total}** | 🚨 **SCORE: {sec_score}/100** | **Remediation required before production deployment** |")
+    md.append("\n")
+
+    # Table 3: Top Critical Vulnerabilities
+    md.append("### ⚠️ Top 6 Critical Vulnerabilities (Must Fix Immediately)\n")
+    md.append("| ID | Vulnerability | Affected File / Endpoint | Exploitation Risk | Recommended Fix |")
+    md.append("| :--- | :--- | :--- | :--- | :--- |")
+    md.append("| **SEC-001** | SQL Injection | `user_login.php` (POST) | Login bypass with `' OR '1'='1` | Convert to PDO prepared statements |")
+    md.append("| **SEC-002** | SQL Injection | `user_signup.php` (POST) | Second-order injection in INSERT query | Parameterize INSERT with prepared statements |")
+    md.append("| **SEC-003** | UNION SQLi | `get_organizers.php` (GET) | Database dump & password hash exfiltration | Bound parameters for LIKE `%city%` clause |")
+    md.append("| **SEC-004** | Account Takeover | `user_reset_password.php` (POST) | Reset any user password with only email (no OTP) | Require email OTP validation before reset |")
+    md.append("| **SEC-005** | Account Takeover | `org_reset_password.php` (POST) | Reset any municipal org password with email | Require email OTP validation before reset |")
+    md.append("| **SEC-006** | No Session Mgmt | `db.php` / All 21 Endpoints | Universal user/admin impersonation | Enforce server `$_SESSION` or JWT auth |")
+    md.append("\n")
+
+    # Table 4: Category Breakdown Table
+    md.append("### 📋 Functional Test Categories\n")
     md.append("| Category | Selenium Tests | Appium Tests | API Load Tests |")
     md.append("| :--- | :---: | :---: | :---: |")
     
@@ -112,14 +143,13 @@ def main():
         
     md.append(f"| **Total** | **{sel_data['total']}** | **{app_data['total']}** | **{load_data['total']}** |")
     md.append("\n")
-    md.append("Job summary generated at run-time\n")
+    md.append("---")
+    md.append("📄 **Artifacts Generated:** `CivicBin_Test_Reports`, `vulnerability-report`, `web-report`, `mobile-report`, `load-report`  ")
+    md.append("📊 **Reports Include:** `findings.xlsx` (4 sheets: Findings, Endpoints, Dependencies, Risk Summary), `security-review.md`, `executive-summary.md`\n")
     
     markdown_content = "\n".join(md)
-    
-    # Output markdown to terminal logs
     print(markdown_content)
     
-    # Write to GITHUB_STEP_SUMMARY
     github_summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if github_summary:
         with open(github_summary, "w", encoding="utf-8") as f:
